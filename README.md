@@ -11,6 +11,16 @@
 - **Tailwind CSS**: 使用现代化 CSS 框架进行 UI 开发。
 - **Zustand**: 用于管理全局状态, products 全局 state。
 
+## tradeoff and improvement
+
+- 目前用户是 mock 的，登录用户后续可以保存到数据库中做验证
+- 目前采用 jwt 无状态 token，无法控制用户登录状态；后续可以通过长，短 2 个 token，以及控制 tokenVersion 的方式来实现强制用户退出。
+- code 需要每次使用后丢弃，以防止重放攻击。当前采用全局 map 变量保存 code，后续可以采用 redis 等或数据库缓存
+- middleware 服务器端中间件也需要控制页面访问权限
+- 后续考虑支持国际化 i18n，以及 dark mode theme 切换
+- SEO 优化：对于单个产品展示，可考虑采用 SSG/ISR 静态缓存 revalidate
+- UT 有覆盖，后续可以用 cypress 增加 AT
+
 ## 快速开始
 
 1.  安装依赖:
